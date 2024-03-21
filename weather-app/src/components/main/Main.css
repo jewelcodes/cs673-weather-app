@@ -1,0 +1,10 @@
+.main {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 20vw;
+    width: 80vw;
+    color: #fff;
+    text-align: center;
+    padding: 5vh 10vw;
+}
