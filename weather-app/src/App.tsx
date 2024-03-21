@@ -14,7 +14,10 @@ function App() {
     let [background, setBackground] = useState(Pic);
 
     return (
-        <Context.Provider value={{location: "Boston"}}>
+        <Context.Provider value={{
+            locations: ["Boston", "New York", "London"],
+            currentLocation: 0
+            }}>
             <div className="background" style={{backgroundImage: updateBackground()}}>
                 <Sidebar change={setBackground} />
                 <Main />

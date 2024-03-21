@@ -6,7 +6,7 @@ function DailyForecast(props:any) {
     const context = useContext(Context);
 
     return (
-        <div>hi context test {context.hello}</div>
+        <div>hi context test {context.currentLocation}</div>
     );
 }
 
