@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
-import Sidebar from './sidebar/Sidebar.tsx';
-import Pic from './backgrounds/rainnight.jpg';
+import Sidebar from './components/sidebar/Sidebar.tsx';
+import Pic from './backgrounds/cloudynight.jpg';
 
 function App() {
     let [background, setBackground] = useState(Pic);
