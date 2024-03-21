@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Sidebar from './sidebar/Sidebar.tsx';
-import Background from './backgrounds/rainnight.jpg';
+import Pic from './backgrounds/rainnight.jpg';
 
 function App() {
-  return (
-    <div className="background" style={{backgroundImage: "url(" + Background  + ")"}}>
-      hello test something
-      <Sidebar />
-    </div>
-  );
-}
+    let [background, setBackground] = useState(Pic);
+
+    return (
+      <div className="background" style={{backgroundImage: "url(" + background + ")"}}>
+        <Sidebar change={setBackground} />
+      </div>
+    );
+} 
 
 export default App;

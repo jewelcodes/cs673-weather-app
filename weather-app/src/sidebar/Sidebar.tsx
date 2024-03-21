@@ -1,11 +1,16 @@
 import React from 'react';
+import './Sidebar.css';
+import SidebarPlace from './SidebarPlace.tsx';
 
-function Sidebar() {
+function Sidebar(props:any) {
     return (
-        <div>
-            Sidebar hello world whatever
+        <div className="sidebar">
+            {/* obv just testing */}
+            <SidebarPlace active={true} place="Boston" />
+            <SidebarPlace place="New York" />
+            <SidebarPlace place="London" />
         </div>
-    )
+    );
 }
 
 export default Sidebar;

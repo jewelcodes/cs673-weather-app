@@ -1,0 +1,55 @@
+.sidebar {
+    box-sizing: border-box;
+    padding: 1em;
+    width: 20vw;
+    height: 100vh;
+    background-color: rgba(32,32,32,0.6);
+    color: #eee;
+}
+
+.sidebar > div {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    margin: 0 0 0.6em 0;
+    padding: 1em;
+    border-radius: 0.3em;
+}
+
+.sidebar .active {
+    background-color: rgba(128,128,128,0.6);
+}
+
+.sidebar > div div:first-of-type {
+    width: 100%;
+}
+
+.sidebar h1 {   /* temp */
+    margin: 0;
+    padding: 0;
+    font-size: 4.1em;
+    line-height: 100%;
+    font-weight: 300;
+}
+
+.sidebar h2 {   /* place name */
+    margin: 0 0 0.3em 0;
+    padding: 0;
+    font-size: 1.3em;
+    line-height: 100%;
+}
+
+.sidebar h3 {   /* local time */
+    margin: 0 0 0.7em 0;
+    padding: 0;
+    font-size: 0.9em;
+    line-height: 100%;
+}
+
+.sidebar h4 {   /* conditions */
+    margin: 0;
+    padding: 0;
+    font-size: 0.9em;
+    line-height: 100%;
+    opacity: 0.8;
+}
