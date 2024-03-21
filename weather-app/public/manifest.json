@@ -1,0 +1,6 @@
+{
+  "short_name": "Weather",
+  "name": "Weather app for MET CS 673",
+  "start_url": ".",
+  "display": "standalone"
+}
