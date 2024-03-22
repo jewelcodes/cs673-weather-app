@@ -17,12 +17,12 @@ async function rawWeather(place:string, units:string) {
 
 export async function now(place:string, units:string) {
     let object:any = {};
-    let raw:any = rawWeather(place, units);
+    let raw:any = await rawWeather(place, units);
 
     if(raw == null) return null;
 
     object.place = raw.name;
-    object.condition = raw.weather.main;
+    object.condition = raw.weather[0].main;
     object.time = raw.dt;
     object.timezone = raw.timezone;
     object.temp = raw.main.temp;
