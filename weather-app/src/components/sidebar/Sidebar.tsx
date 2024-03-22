@@ -1,23 +1,29 @@
-import React, {useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import './Sidebar.css';
 import SidebarPlace from './SidebarPlace.tsx';
 import { Context } from '../../App.tsx';
 
-function Places() {
-    const context = useContext(Context);
-    const currentPlace = context.currentLocation;
+function Places(handler, locations, current) {
     let places = [];
 
-    for(let i = 0; i < context.locations.length; i++) {
-        let place = context.locations[i];
-        places.push(<SidebarPlace place={place} active={i==currentPlace} id={i} />);
+    for(let i = 0; i < locations.length; i++) {
+        let place = locations[i];
+        places.push(<SidebarPlace clickHandler={handler} place={place} active={i==current} id={i} />);
     }
 
     return places;
 }
 
 function Sidebar(props:any) {
-    const places = Places();
+    const context = useContext(Context);
+    let [ current, setCurrent ] = useState(context.currentLocation);
+
+    useEffect(() => {
+        console.log("sidebar: useeffect change to " + current);
+        context.currentLocation = current;
+    }, [current]);
+
+    const places = Places(setCurrent, context.locations, current);
     return (
         <div className="sidebar">
             {places}

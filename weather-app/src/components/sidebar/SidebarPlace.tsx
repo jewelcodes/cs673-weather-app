@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './Sidebar.css';
+import { Context } from '../../App';
 
 function SidebarPlace(props:any) {
     return (
-        <div className={props.active ? "active" : ""}>
+        <div className={props.active ? "active" : ""} onClick={() => props.clickHandler(props.id)}>
             <div>
                 {/* left flexbox */}
                 <h2>{props.place}</h2>
