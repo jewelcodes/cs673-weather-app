@@ -11,7 +11,7 @@ function updateBackground() {
 
 function App() {
     let [background, setBackground] = useState(Pic);
-    let [current, setCurrent] = useState(0);
+    let [current, setCurrent] = useState(currentLocation());
 
     useEffect(() => {
         //console.log("app" + currentLocation());
