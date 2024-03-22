@@ -3,7 +3,7 @@ import './App.css';
 import Sidebar from './components/sidebar/Sidebar.tsx';
 import Main from './components/main/Main.tsx';
 import Pic from './backgrounds/night.jpg';
-import { currentLocation } from './common/locations.ts';
+import { currentLocation, getConditions, updateConditions, isLoading } from './common/locations.ts';
 
 function updateBackground() {
     return "url(" + Pic + ")";  // TODO
@@ -12,10 +12,17 @@ function updateBackground() {
 function App() {
     let [background, setBackground] = useState(Pic);
     let [current, setCurrent] = useState(currentLocation());
+    let [time, setTime] = useState(0);
+
+    let update = async () => {
+        console.log("app" + currentLocation());
+        await updateConditions();
+        setTime(getConditions(0) == null ? 0 : getConditions(0).time);
+    };
 
     useEffect(() => {
-        //console.log("app" + currentLocation());
-    }, [current]);
+        update();
+    });
 
     return (
         <div className="background" style={{backgroundImage: updateBackground()}}>
