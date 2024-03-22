@@ -1,9 +1,9 @@
 import React, {useState, useContext, useEffect} from 'react';
 import './Sidebar.css';
 import SidebarPlace from './SidebarPlace.tsx';
-import { Context } from '../../App.tsx';
+import { locations, currentLocation, setLocationIndex } from '../../common/locations.ts';
 
-function Places(handler, locations, current) {
+function Places(handler:Function, locations:string[], current:number) {
     let places = [];
 
     for(let i = 0; i < locations.length; i++) {
@@ -15,15 +15,15 @@ function Places(handler, locations, current) {
 }
 
 function Sidebar(props:any) {
-    const context = useContext(Context);
-    let [ current, setCurrent ] = useState(context.currentLocation);
+    let [ current, setCurrent ] = useState(currentLocation());
 
     useEffect(() => {
         console.log("sidebar: useeffect change to " + current);
-        context.currentLocation = current;
+        props.update(current);
+        setLocationIndex(current);
     }, [current]);
 
-    const places = Places(setCurrent, context.locations, current);
+    const places = Places(setCurrent, locations(), current);
     return (
         <div className="sidebar">
             {places}

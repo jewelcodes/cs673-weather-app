@@ -1,12 +1,11 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './DailyForecast.css';
-import { Context } from '../../App.tsx';
+import { currentLocation } from '../../common/locations';
 
 function DailyForecast(props:any) {
-    const context = useContext(Context);
 
     return (
-        <div>hi context test {context.currentLocation}</div>
+        <div>hi context test {currentLocation()}</div>
     );
 }
 

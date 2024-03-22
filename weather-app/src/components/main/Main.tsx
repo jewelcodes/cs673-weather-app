@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import DailyForecast from '../DailyForecast/DailyForecast.tsx';
 import './Main.css';
 

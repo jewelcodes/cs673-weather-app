@@ -1,10 +1,9 @@
-import React, {useState, createContext, useContext} from 'react';
+import React, {useState, createContext, useContext, useEffect} from 'react';
 import './App.css';
 import Sidebar from './components/sidebar/Sidebar.tsx';
 import Main from './components/main/Main.tsx';
 import Pic from './backgrounds/night.jpg';
-
-export const Context = createContext();
+import { currentLocation } from './common/locations.ts';
 
 function updateBackground() {
     return "url(" + Pic + ")";  // TODO
@@ -12,17 +11,17 @@ function updateBackground() {
 
 function App() {
     let [background, setBackground] = useState(Pic);
+    let [current, setCurrent] = useState(0);
+
+    useEffect(() => {
+        //console.log("app" + currentLocation());
+    }, [current]);
 
     return (
-        <Context.Provider value={{
-            locations: ["Boston", "New York", "London"],
-            currentLocation: 0
-            }}>
-            <div className="background" style={{backgroundImage: updateBackground()}}>
-                <Sidebar change={setBackground} />
-                <Main />
-            </div>
-        </Context.Provider>
+        <div className="background" style={{backgroundImage: updateBackground()}}>
+            <Sidebar update={setCurrent}  />
+            <Main />
+        </div>
     );
 } 
 
