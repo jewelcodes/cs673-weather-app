@@ -26,7 +26,7 @@ function SidebarPlace(props:any) {
             hours -= 12;
         }
 
-        return hours + ":" + minutes + " " + ampm;
+        return hours + ":" + ((minutes < 10) ? "0" : "") + minutes + " " + ampm;
     };
 
     if(isLoading() || conditions == null) {
