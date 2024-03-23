@@ -20,7 +20,7 @@ function Current(props:any) {
                 <h2>{conditions.place}</h2>
                 <h1>{Math.round(conditions.temp)}&deg;</h1>
                 <h3>{conditions.condition}</h3>
-                <h3>H: {Math.round(forecast.forecast[0].high)}&deg;&nbsp;&nbsp;L: {Math.round(forecast.forecast[0].low)}&deg;</h3>
+                <h3>H: {conditions.temp > forecast.forecast[0].high ? Math.round(conditions.temp) : Math.round(forecast.forecast[0].high)}&deg;&nbsp;&nbsp;L: {conditions.temp < forecast.forecast[0].low ? Math.round(conditions.temp) : Math.round(forecast.forecast[0].low)}&deg;</h3>
             </div>
         );
     }
