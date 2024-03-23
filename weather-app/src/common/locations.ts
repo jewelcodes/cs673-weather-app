@@ -1,11 +1,14 @@
 import { now } from './now.ts';
+import { forecast } from './forecast.ts';
 
 var Locations:string[] = ["Boston", "Paris", "Cairo", "Tokyo" ];
 var CurrentLocation:number = 0;
-var Conditions:any[] = []
+var Conditions:any[] = [];
+var Forecast:any[] = [];
 var Loading = true;
 var Initial = true;
 var lastUpdate = 0;
+var Units = "metric";
 
 export function locations() {
     return Locations;
@@ -38,9 +41,11 @@ export async function updateConditions() {
     lastUpdate = Date.now()/1000;
 
     Conditions = [];
+    Forecast = [];
     
     for(let i = 0; i < Locations.length; i++) {
-        Conditions[i] = await now(Locations[i], "metric");
+        Conditions[i] = await now(Locations[i], Units);
+        Forecast[i] = await forecast(Locations[i], Units);
     }
 
     Loading = false;
@@ -48,4 +53,8 @@ export async function updateConditions() {
 
 export function getConditions(n:number) {
     return Conditions[n];
+}
+
+export function getForecast(n:number) {
+    return Forecast[n];
 }
