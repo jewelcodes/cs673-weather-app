@@ -28,7 +28,7 @@ export async function updateConditions() {
     if(Loading && !Initial) return;
 
     let elapsed = (Date.now()/1000) - lastUpdate;
-    if(elapsed < 60) return;
+    if(elapsed < 600) return;   // limit API requests to every 10 minutes
 
     console.log("updating weather");
 
