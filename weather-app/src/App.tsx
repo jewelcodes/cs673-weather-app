@@ -13,6 +13,7 @@ import Day from './backgrounds/day.jpg';
 import CloudyDay from './backgrounds/cloudyday.jpg';
 import RainDay from './backgrounds/rainday.jpg';
 import SnowDay from './backgrounds/snowday.jpg';
+import Mist from './backgrounds/mist.jpg';
 
 function App() {
     let [background, setBackground] = useState(Night);  // default
@@ -27,7 +28,9 @@ function App() {
         let conditions = getConditions(currentLocation())
 
         if(conditions != null) {
-            if(now < conditions.sunrise || now > conditions.sunset) {
+            if(conditions.condition == "Mist" || conditions.condition == "Haze" || conditions.condition == "Fog") {
+                setBackground(Mist);
+            } else if(now < conditions.sunrise || now > conditions.sunset) {
                 // here we know it's night
                 if(conditions.condition == "Cloudy") setBackground(CloudyNight);
                 else if(conditions.condition == "Rain") setBackground(RainNight);
