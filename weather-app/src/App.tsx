@@ -27,7 +27,7 @@ function App() {
         let conditions = getConditions(currentLocation())
 
         if(conditions != null) {
-            if(now > conditions.sunset) {
+            if(now < conditions.sunrise || now > conditions.sunset) {
                 // here we know it's night
                 if(conditions.condition == "Cloudy") setBackground(CloudyNight);
                 else if(conditions.condition == "Rain") setBackground(RainNight);
