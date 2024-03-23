@@ -37,7 +37,7 @@ function App() {
                 if(conditions.condition == "Cloudy") setBackground(CloudyDay);
                 else if(conditions.condition == "Rain") setBackground(RainDay);
                 else if(conditions.condition == "Snow") setBackground(SnowDay);
-                else setBackground(Night);
+                else setBackground(Day);
             }
         }
 
