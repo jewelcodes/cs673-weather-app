@@ -33,7 +33,7 @@ function forecastDate(raw:any, day:number) {
         }
     }
 
-    return -1;
+    return 0;
 }
 
 function getLow(raw:any, n:number) {
