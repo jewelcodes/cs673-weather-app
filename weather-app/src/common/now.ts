@@ -32,6 +32,8 @@ export async function now(place:string, units:string) {
     object.pressure = raw.main.pressure;
     object.wind = raw.wind.speed;
     object.gust = raw.wind.gust;
+    object.sunset = raw.sys.sunset;
+    object.sunrise = raw.sys.sunrise;
 
     return object;
 }
