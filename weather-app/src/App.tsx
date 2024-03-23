@@ -2,22 +2,46 @@ import React, {useState, createContext, useContext, useEffect} from 'react';
 import './App.css';
 import Sidebar from './components/sidebar/Sidebar.tsx';
 import Main from './components/main/Main.tsx';
-import Pic from './backgrounds/night.jpg';
 import { currentLocation, getConditions, updateConditions, isLoading } from './common/locations.ts';
 
-function updateBackground() {
-    return "url(" + Pic + ")";  // TODO
-}
+// backgrounds for diff conditions
+import Night from './backgrounds/night.jpg';
+import CloudyNight from './backgrounds/cloudynight.jpg';
+import RainNight from './backgrounds/rainnight.jpg';
+import SnowNight from './backgrounds/snownight.jpg';
+import Day from './backgrounds/day.jpg';
+import CloudyDay from './backgrounds/cloudyday.jpg';
+import RainDay from './backgrounds/rainday.jpg';
+import SnowDay from './backgrounds/snowday.jpg';
 
 function App() {
-    let [background, setBackground] = useState(Pic);
+    let [background, setBackground] = useState(Night);  // default
     let [current, setCurrent] = useState(currentLocation());
     let [time, setTime] = useState(0);
 
     const update = async () => {
         //console.log("app: useeffect" + currentLocation());
         await updateConditions();
-        setTime(Date.now()/1000);
+
+        let now = Date.now() / 1000;
+        let conditions = getConditions(currentLocation())
+
+        if(conditions != null) {
+            if(now > conditions.sunset) {
+                // here we know it's night
+                if(conditions.condition == "Cloudy") setBackground(CloudyNight);
+                else if(conditions.condition == "Rain") setBackground(RainNight);
+                else if(conditions.condition == "Snow") setBackground(SnowNight);
+                else setBackground(Night);
+            } else {
+                if(conditions.condition == "Cloudy") setBackground(CloudyDay);
+                else if(conditions.condition == "Rain") setBackground(RainDay);
+                else if(conditions.condition == "Snow") setBackground(SnowDay);
+                else setBackground(Night);
+            }
+        }
+
+        setTime(now);
     };
 
     useEffect(() => {
@@ -27,7 +51,7 @@ function App() {
     setInterval(update, 1000);
 
     return (
-        <div className="background" style={{backgroundImage: updateBackground()}}>
+        <div className="background" style={{backgroundImage: "url('" + background + "')"}}>
             <Sidebar update={setCurrent}  />
             <Main />
         </div>
