@@ -4,17 +4,13 @@ import { now } from '../../common/now.ts';
 import { isLoading, getConditions } from '../../common/locations.ts';
 
 function SidebarPlace(props:any) {
-    /*useEffect(() => {
-        updateConditions();
-    }, []);
+    let [conditions, setConditions] = useState(getConditions(props.id));
+    let [time, setTime] = useState(conditions == null ? 0 : conditions.time);
 
-    let updateConditions = async () => {
-        setLoading(true);
-        setConditions(await now(props.place, "imperial"));
-        setLoading(false);
-    };*/
-
-    let conditions = getConditions(props.id);
+    useEffect(() => {
+        setConditions(getConditions(props.id));
+        setTime(conditions == null ? 0 : conditions.time);
+    });
 
     if(isLoading() || conditions == null) {
         return (

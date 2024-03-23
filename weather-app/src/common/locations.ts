@@ -1,6 +1,6 @@
 import { now } from './now.ts';
 
-var Locations:string[] = ["Boston", "London", "Cairo", "Buffalo"];
+var Locations:string[] = ["Boston", "Paris", "Cairo", "Tokyo" ];
 var CurrentLocation:number = 0;
 var Conditions:any[] = []
 var Loading = true;
@@ -29,6 +29,8 @@ export async function updateConditions() {
 
     let elapsed = (Date.now()/1000) - lastUpdate;
     if(elapsed < 60) return;
+
+    console.log("updating weather");
 
     Loading = true;
     Initial = false;
