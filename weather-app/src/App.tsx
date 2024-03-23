@@ -14,15 +14,17 @@ function App() {
     let [current, setCurrent] = useState(currentLocation());
     let [time, setTime] = useState(0);
 
-    let update = async () => {
-        console.log("app" + currentLocation());
+    const update = async () => {
+        console.log("app: useeffect" + currentLocation());
         await updateConditions();
-        setTime(getConditions(0) == null ? 0 : getConditions(0).time);
+        setTime(getConditions(0) == null ? 0 : getConditions(0).time); // what was i thinking here
     };
 
     useEffect(() => {
         update();
     });
+
+    setInterval(update, 5000);
 
     return (
         <div className="background" style={{backgroundImage: updateBackground()}}>
