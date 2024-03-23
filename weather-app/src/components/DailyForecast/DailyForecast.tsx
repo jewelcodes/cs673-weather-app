@@ -5,7 +5,9 @@ import { currentLocation } from '../../common/locations';
 function DailyForecast(props:any) {
 
     return (
-        <div>hi context test {currentLocation()}</div>
+        <div class="daily">
+            <h1>DAILY FORECAST</h1>
+        </div>
     );
 }
 
