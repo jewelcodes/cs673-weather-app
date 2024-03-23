@@ -23,6 +23,9 @@ export async function now(place:string, units:string) {
 
     object.place = raw.name;
     object.condition = raw.weather[0].main;
+
+    if(object.condition == "Clouds") object.condition = "Cloudy";   // this was bothering me for some reason idk
+
     object.time = raw.dt;
     object.timezone = raw.timezone;
     object.temp = raw.main.temp;
