@@ -9,6 +9,59 @@ async function rawForecast(place:string, units:string) {
     return data;
 }
 
+/* HELPER FUNCTIONS */
+function forecastDate(raw:any, day:number) {
+    let date:string = "";
+    let current:number = 0;
+    let localDate;
+
+    for(let i = 0; i < raw.list.length; i++) {
+        localDate = new Date(raw.list[i].dt_txt + " UTC");
+        //localDate.setUTCDate(raw.list[i].dt_txt);
+        localDate.setUTCHours(localDate.getUTCHours() + (raw.city.timezone/3600));
+
+        //console.log("converted " + raw.list[i].dt_txt + " to " + localDate.toISOString() + " for " + raw.city.name);
+
+        raw.list[i].local_time = localDate.toUTCString().slice(0, 10);
+
+        //if(raw.list[i].dt_txt.slice(0, 10) != date) {
+        if(raw.list[i].local_time != date) {
+            current++;
+            date = raw.list[i].local_time;
+
+            if(current > day) return i;
+        }
+    }
+
+    return -1;
+}
+
+function getLow(raw:any, n:number) {
+    let start:number = forecastDate(raw, n);
+    let lowest:number = 5000;
+
+    for(let i = start; i < start+8; i++) {
+        if(raw.list[i].main.temp < lowest) {
+            lowest = raw.list[i].main.temp;
+        }
+    }
+
+    return lowest;
+}
+
+function getHigh(raw:any, n:number) {
+    let start:number = forecastDate(raw, n);
+    let highest:number = -5000;
+
+    for(let i = start; i < start+8; i++) {
+        if(raw.list[i].main.temp > highest) {
+            highest = raw.list[i].main.temp;
+        }
+    }
+
+    return highest;
+}
+
 /*
  * forecast(): returns the weather forecast for a given place
  * Parameter: place - city or zip code
@@ -24,12 +77,11 @@ export async function forecast(place:string, units:string) {
     object.place = raw.city.name;
     object.forecast = [];
     
-    for(let i = 0; i < raw.list.length; i++) {
+    for(let i = 0; i < 5; i++) {
         let entry:any = {};
-        entry.time = raw.list[i].dt;
-        entry.low = raw.list[i].main.temp_min;
-        entry.high = raw.list[i].main.temp_max;
-        entry.condition = raw.list[i].weather[0].main;
+
+        entry.low = getLow(raw, i);
+        entry.high = getHigh(raw, i);
 
         object.forecast.push(entry);
     }
