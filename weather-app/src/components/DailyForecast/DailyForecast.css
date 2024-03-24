@@ -42,5 +42,6 @@
 }
 
 .dailyEntry .temp {
-    width: 60%;
+    text-align: center;
+    width: 70%;
 }

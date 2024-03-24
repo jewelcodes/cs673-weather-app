@@ -58,3 +58,7 @@ export function getConditions(n:number) {
 export function getForecast(n:number) {
     return Forecast[n];
 }
+
+export function getUnits() {
+    return Units;
+}
