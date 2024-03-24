@@ -9,9 +9,33 @@
 
 .daily h1 {
     display: block;
-    margin: 0 0 0.3em 0;
+    margin: 0;
     padding: 0 0 1em 0;
-    font-size: 1em;
+    font-size: 0.8em;
     color: rgba(240,240,255,0.7);
     border-bottom: 1px solid rgba(240,240,255,0.7);
+}
+
+.dailyEntry {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1em 0;
+    border-bottom: 1px solid rgba(240,240,255,0.7);
+    font-size: 1.1em;
+    line-height: 100%;
+}
+
+.dailyEntry .day {
+    width: 20%;
+}
+
+.dailyEntry .icon {
+    width: 20%;
+}
+
+.dailyEntry .temp {
+    width: 60%;
 }
