@@ -16,12 +16,20 @@ function forecastDate(raw:any, day:number) {
     let localDate;
 
     for(let i = 0; i < raw.list.length; i++) {
-        localDate = new Date(raw.list[i].dt_txt + " UTC");
+        let tempDate = new Date(raw.list[i].dt_txt);
+        localDate = new Date();
+        localDate.setUTCFullYear(tempDate.getFullYear());
+        localDate.setUTCMonth(tempDate.getMonth());
+        localDate.setUTCDate(tempDate.getDate());
+        localDate.setUTCHours(tempDate.getHours() + (raw.city.timezone/3600));
+        localDate.setUTCMinutes(tempDate.getMinutes());
+        
         //localDate.setUTCDate(raw.list[i].dt_txt);
-        localDate.setUTCHours(localDate.getUTCHours() + (raw.city.timezone/3600));
+        //localDate.setUTCHours(localDate.getUTCHours() + (raw.city.timezone/3600));
 
         //console.log("converted " + raw.list[i].dt_txt + " to " + localDate.toISOString() + " for " + raw.city.name);
 
+        //console.log(localDate);
         raw.list[i].local_time = localDate.toISOString().slice(0, 10);
 
         //if(raw.list[i].dt_txt.slice(0, 10) != date) {

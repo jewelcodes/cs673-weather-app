@@ -17,7 +17,7 @@ function DailyForecast(props:any) {
                 </div>
             );
         } else {
-            day = new Date(forecast.forecast[d].timestamp + " 00:00:00 UTC");
+            day = new Date(forecast.forecast[d].timestamp);
             day = day.getUTCDay();
 
             return (
