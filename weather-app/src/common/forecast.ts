@@ -22,7 +22,7 @@ function forecastDate(raw:any, day:number) {
 
         //console.log("converted " + raw.list[i].dt_txt + " to " + localDate.toISOString() + " for " + raw.city.name);
 
-        raw.list[i].local_time = localDate.toUTCString().slice(0, 10);
+        raw.list[i].local_time = localDate.toISOString().slice(0, 10);
 
         //if(raw.list[i].dt_txt.slice(0, 10) != date) {
         if(raw.list[i].local_time != date) {
@@ -112,8 +112,23 @@ export async function forecast(place:string, units:string) {
         entry.low = getLow(raw, i);
         entry.high = getHigh(raw, i);
         entry.condition = getCondition(raw, i);
+        entry.timestamp = raw.list[forecastDate(raw, i)].local_time;
 
         object.forecast.push(entry);
+    }
+
+    // now find the lowest and highest temps in this forecast
+    object.lowest = 5000;
+    object.highest = -5000;
+
+    for(let i = 0; i < 5; i++) {
+        if(object.forecast[i].low < object.lowest) {
+            object.lowest = object.forecast[i].low;
+        }
+
+        if(object.forecast[i].high > object.highest) {
+            object.highest = object.forecast[i].high;
+        }
     }
 
     return object;
