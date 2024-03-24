@@ -62,6 +62,35 @@ function getHigh(raw:any, n:number) {
     return highest;
 }
 
+function getCondition(raw:any, n:number) {
+    let start:number = forecastDate(raw, n);
+    let clearCount = 0;
+    let pptCount = 0;
+    let cloudCount = 0;
+    let snowToggle = false;     // false = rain, true = snow
+
+    for(let i = start; i < start+8; i++) {
+        let s = raw.list[i].weather[0].main
+        if(s == "Clouds") {
+            cloudCount++;
+        } else if(s == "Snow") {
+            pptCount++;
+            snowToggle = true;
+        } else if(s == "Rain") {
+            pptCount++;
+        } else if(s == "Clear") {
+            clearCount++;
+        } else if(s == "Clouds") {
+            cloudCount++;
+        }
+    }
+
+    if(snowToggle) return "Snow";
+    else if(pptCount) return "Rain";
+    else if(cloudCount >= clearCount) return "Cloudy";
+    else return "Clear";
+}
+
 /*
  * forecast(): returns the weather forecast for a given place
  * Parameter: place - city or zip code
@@ -82,6 +111,7 @@ export async function forecast(place:string, units:string) {
 
         entry.low = getLow(raw, i);
         entry.high = getHigh(raw, i);
+        entry.condition = getCondition(raw, i);
 
         object.forecast.push(entry);
     }
