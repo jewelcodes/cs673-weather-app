@@ -13,7 +13,7 @@ function DailyForecast(props:any) {
     };
 
     /* ALL VALUES IN CELSIUS FOR THIS FUNCTION */
-    const tempGradient = (lowest:number, highest:number, min:number, max:number) => {
+    const tempGradient = (today:boolean, lowest:number, highest:number, min:number, max:number, now:number) => {
         // start by calculating width
         let totalRange = highest-lowest;
         let dayRange = max-min;
@@ -30,19 +30,19 @@ function DailyForecast(props:any) {
 
         /* Color Reference
         deg C      color
-        -50     119, 10, 166
-        -40     91, 10, 166
-        -30     75, 10, 166
-        -20     33, 10, 166
-        -10     24, 67, 196
-        0       54, 118, 227
-        10      54, 192, 227
-        20      54, 227, 77
-        30      227, 204, 54
-        40      227, 54, 54
-        50      168, 3, 3 */
+        -50     166, 36, 164
+        -40     196, 61, 194
+        -30     224, 83, 222
+        -20     193, 115, 235
+        -10     115, 123, 235
+        0       71, 114, 214
+        10      71, 214, 169
+        20      143, 214, 71
+        30      214, 138, 71
+        40      212, 44, 44
+        50      163, 8, 8 */
 
-        const colors = [[119,10,166],[91,10,166],[75,10,166],[33,10,166],[24,67,196],[79,130,219],[101,212,240],[54,227,77],[227,204,54],[227,54,54],[168,3,3]];
+        const colors = [[166,36,164],[196,61,194],[224,83,222],[193,115,235],[115,123,235],[71,114,214],[71,214,169],[143,214,71],[214,138,71],[212,44,44],[163,8,8]];
         let lowestClass = Math.round((lowest/10)+5);
         let highestClass = Math.round((highest/10)+5);
 
@@ -79,15 +79,25 @@ function DailyForecast(props:any) {
             }
         }
 
-        /*hiColor.push(maxColor[0] - (highOffset * (maxColor[0] - minColor[0])));
-        hiColor.push(maxColor[1] - (highOffset * (maxColor[1] - minColor[1])));
-        hiColor.push(maxColor[2] - (highOffset * (maxColor[2] - minColor[2])));*/
-        
-        return (
-            <div className="gradientContainer">
-                <div className="gradient" style={{width: width, left: position, backgroundImage: "linear-gradient(to right," + rgbString(loColor) + "," + rgbString(hiColor) + ")"}}></div>
-            </div>
-        );
+        // for today's date, also add something to indicate current temp
+        if(today) {
+            let currentOffset = now-min;
+            let currentPosition = Math.floor((currentOffset*100)/dayRange) + "%";
+
+            return (
+                <div className="gradientContainer">
+                    <div className="gradient" style={{width: width, left: position, backgroundImage: "linear-gradient(to right," + rgbString(loColor) + "," + rgbString(hiColor) + ")"}}>
+                        <div className="now" style={{left: "calc(" + currentPosition + " - 0.2em)"}}></div>
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div className="gradientContainer">
+                    <div className="gradient" style={{width: width, left: position, backgroundImage: "linear-gradient(to right," + rgbString(loColor) + "," + rgbString(hiColor) + ")"}}></div>
+                </div>
+            );
+        }
     };
 
     const dailyEntry = (d:number) => {
@@ -134,17 +144,20 @@ function DailyForecast(props:any) {
             // for the gradient
             let minC:number, maxC:number;
             let lowest:number, highest:number;  // in celsius!!!
+            let nowC:number;
 
             if(getUnits() == "imperial") {
                 lowest = fToC(forecast.lowest);
                 highest = fToC(forecast.highest);
                 minC = fToC(min);
                 maxC = fToC(max);
+                nowC = fToC(conditions.temp);
             } else {
                 lowest = forecast.lowest;
                 highest = forecast.highest;
                 minC = min;
                 maxC = max;
+                nowC = conditions.temp;
             }
 
             if(d == 0) {
@@ -172,7 +185,7 @@ function DailyForecast(props:any) {
                 <div className="dailyEntry">
                     <div className="day"><strong>{d == 0 ? "Today" : days[day]}</strong></div>
                     <div className="icon"><i className={icon} title={conditionText}></i></div>
-                    <div className="temp"><strong>{Math.round(min)}&deg;{tempGradient(lowest, highest, minC, maxC)}{Math.round(max)}&deg;</strong></div>
+                    <div className="temp"><strong>{Math.round(min)}&deg;{tempGradient(d == 0, lowest, highest, minC, maxC, nowC)}{Math.round(max)}&deg;</strong></div>
                 </div>
             );
         }

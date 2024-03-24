@@ -50,7 +50,7 @@
     position: relative;
     display: inline-block;
     width: 50%;
-    padding: 0.15em;
+    padding: 0.2em;
     margin: 0 1em;
     background-color: rgba(0,0,32,0.3);
     border-radius: 1em;
@@ -60,10 +60,23 @@
     display: inline-block;
     position: absolute;
     top: 0;
-    padding: 0.15em;
+    padding: 0.2em;
     border-radius: 1em;
 
     /* dynamically set left, width, and background */
     /*left: 0;
     width: 100%;*/
+}
+
+.gradient .now {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    padding: 0.2em;
+    border-radius: 1em;
+    /*border-right: 0.05em solid rgba(120,120,130,0.6);
+    border-left: 0.05em solid rgba(120,120,130,0.6);
+    border-top: 0.05em solid rgba(0,0,0,0);
+    border-bottom: 0.05em solid rgba(0,0,0,0);*/
+    background-color: rgba(240,240,255,0.9);
 }
