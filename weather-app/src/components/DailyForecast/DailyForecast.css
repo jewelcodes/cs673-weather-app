@@ -33,7 +33,7 @@
 }
 
 .dailyEntry .day {
-    width: 15%;
+    width: 20%;
 }
 
 .dailyEntry .icon {
@@ -42,6 +42,28 @@
 }
 
 .dailyEntry .temp {
-    text-align: center;
-    width: 70%;
+    text-align: right;
+    width: 65%;
+}
+
+.gradientContainer {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    padding: 0.15em;
+    margin: 0 1em;
+    background-color: rgba(0,0,32,0.3);
+    border-radius: 1em;
+}
+
+.gradient {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    padding: 0.15em;
+    border-radius: 1em;
+
+    /* dynamically set left, width, and background */
+    /*left: 0;
+    width: 100%;*/
 }
