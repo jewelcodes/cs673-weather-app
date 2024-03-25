@@ -10,3 +10,13 @@
     user-select: none;
     cursor: default;
 }
+
+/* MOBILE/TABLET RULES */
+
+@media screen and (max-width: 1023px) {
+    .main {
+        left: 0;
+        width: 100vw;
+        padding: 5vh 7vw;
+    }
+}
