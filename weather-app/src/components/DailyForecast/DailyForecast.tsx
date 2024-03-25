@@ -18,11 +18,16 @@ function DailyForecast(props:any) {
         let totalRange = highest-lowest;
         let dayRange = max-min;
 
-        let width = Math.round((dayRange*100)/totalRange) + "%";
+        let width:any = Math.round((dayRange*100)/totalRange);
+        if(width > 100) width = 100;
+        width = width + "%";
 
         // and position
         let offset = min-lowest;
-        let position = Math.round((offset*100)/totalRange) + "%";
+        let position:any = Math.round((offset*100)/totalRange);
+        if(position < 0) position = 0;
+        else if(position > 100) position = 100;
+        position = position + "%";
 
         // and finally colors
         let maxColor, minColor; // min/max for the entire forecast
