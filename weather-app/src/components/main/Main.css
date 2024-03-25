@@ -7,4 +7,6 @@
     color: #fff;
     text-align: center;
     padding: 5vh 25vw;
+    user-select: none;
+    cursor: default;
 }
