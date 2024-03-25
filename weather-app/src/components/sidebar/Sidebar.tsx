@@ -22,7 +22,7 @@ function Sidebar(props:any) {
         console.log("sidebar: useeffect change to " + current);
         props.update(current);
         setLocationIndex(current);
-    });
+    }, [current]);
 
     const deselect = () => {
         document.querySelector("#sidebarToggle").checked = false;

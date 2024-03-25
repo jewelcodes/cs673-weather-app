@@ -19,7 +19,7 @@ export function currentLocation() {
 }
 
 export function setLocationIndex(n:number) {
-    console.log("setting to " + n);
+    //console.log("setting to " + n);
     CurrentLocation = n;
 }
 

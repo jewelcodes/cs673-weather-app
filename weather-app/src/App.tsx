@@ -49,7 +49,7 @@ function App() {
 
     useEffect(() => {
         update();
-    });
+    }, [time]);
 
     setInterval(update, 1000);
 
