@@ -24,12 +24,21 @@ function Sidebar(props:any) {
         setLocationIndex(current);
     });
 
-    const places = Places(setCurrent, locations(), current);
+    const deselect = () => {
+        document.querySelector("#sidebarToggle").checked = false;
+    };
+
+    const clickHandler = (n:number) => {
+        deselect();
+        setCurrent(n);
+    };
+
+    const places = Places(clickHandler, locations(), current);
     return (
         <div className="sidebarContainer">
             <input type="checkbox" id="sidebarToggle" />
             <div className="sidebar">
-                <Search handler={setCurrent} />
+                <Search handler={clickHandler} />
                 {places}
             </div>
 

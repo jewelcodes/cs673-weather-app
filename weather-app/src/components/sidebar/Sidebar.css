@@ -75,9 +75,10 @@
 @media screen and (max-width: 1023px) {
     .sidebar {
         display: none;
-        width: 80vw;
+        width: 100vw;
         z-index: 100000;
-        background-color: rgba(32,32,32,0.92);
+        background-color: rgba(32,32,32,0.98);
+        padding: 1em 3em;
     }
 
     .bottom {
@@ -93,7 +94,7 @@
     }
 
     .bottom label i {
-        font-size: 1.2em;
+        font-size: 1.6em;
         color: #eee;
     }
 }
