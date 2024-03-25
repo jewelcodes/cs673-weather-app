@@ -1,5 +1,15 @@
+.sidebarContainer input[type=checkbox] {
+    display: none;
+}
+
+.sidebarContainer input[type=checkbox]:checked + .sidebar {
+    display: block !important;
+}
+
 .sidebar {
+    display: block;
     box-sizing: border-box;
+    position: absolute;
     padding: 1em;
     width: 20vw;
     min-height: 100vh;
@@ -56,10 +66,34 @@
     opacity: 0.8;
 }
 
+.bottom {
+    display: none;
+}
+
 /* MOBILE/TABLET RULES */
 
 @media screen and (max-width: 1023px) {
     .sidebar {
         display: none;
+        width: 80vw;
+        z-index: 100000;
+        background-color: rgba(32,32,32,0.92);
+    }
+
+    .bottom {
+        display: block;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        box-sizing: border-box;
+        width: 100vw;
+        background-color: rgb(32,32,32);
+        padding: 0.8em 1.2em;
+        text-align: right;
+    }
+
+    .bottom label i {
+        font-size: 1.2em;
+        color: #eee;
     }
 }

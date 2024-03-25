@@ -26,9 +26,18 @@ function Sidebar(props:any) {
 
     const places = Places(setCurrent, locations(), current);
     return (
-        <div className="sidebar">
-            <Search handler={setCurrent} />
-            {places}
+        <div className="sidebarContainer">
+            <input type="checkbox" id="sidebarToggle" />
+            <div className="sidebar">
+                <Search handler={setCurrent} />
+                {places}
+            </div>
+
+            <div className="bottom">
+                <label htmlFor="sidebarToggle">
+                    <i className="fa-solid fa-list"></i>
+                </label>
+            </div>
         </div>
     );
 }
