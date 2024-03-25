@@ -109,9 +109,13 @@ function DailyForecast(props:any) {
         if(isLoading() || forecast == null) {
             return (
                 <div className="dailyEntry">
-                    <div className="day"><strong>--</strong></div>
+                    <div className="day"><strong>&ndash;</strong></div>
                     <div className="icon"></div>
-                    <div className="temp"></div>
+                    <div className="temp">
+                        <strong>--</strong>
+                        <div className="gradientContainer"></div>
+                        <strong>--</strong>
+                    </div>
                 </div>
             );
         } else {
@@ -159,20 +163,20 @@ function DailyForecast(props:any) {
                 maxC = max;
                 nowC = conditions.temp;
             }
-
+            
+            // for current day only
             if(d == 0) {
                 conditionText = conditions.condition;
             } else {
                 conditionText = forecast.forecast[d].condition;
             }
-            
-            // for current day only
+
             if(conditionText == "Cloudy") {
                 icon = "fa-solid fa-cloud";
             } else if(conditionText == "Rain") {
-                icon = "fa-solid fa-cloud-rain"
+                icon = "fa-solid fa-cloud-showers-heavy"
             } else if(conditionText == "Snow") {
-                icon = "fa-solid fa-snowflake";
+                icon = "fa-regular fa-snowflake";
             } else if(conditionText == "Mist" || conditionText == "Fog" || conditionText == "Haze") {
                 icon = "fa-solid fa-smog";
             } else if(d == 0 && isNight) {
@@ -185,7 +189,7 @@ function DailyForecast(props:any) {
                 <div className="dailyEntry">
                     <div className="day"><strong>{d == 0 ? "Today" : days[day]}</strong></div>
                     <div className="icon"><i className={icon} title={conditionText}></i></div>
-                    <div className="temp"><strong>{Math.round(min)}&deg;{tempGradient(d == 0, lowest, highest, minC, maxC, nowC)}{Math.round(max)}&deg;</strong></div>
+                    <div className="temp"><strong>{Math.round(min)}&deg;</strong>{tempGradient(d == 0, lowest, highest, minC, maxC, nowC)}<strong>{Math.round(max)}&deg;</strong></div>
                 </div>
             );
         }
