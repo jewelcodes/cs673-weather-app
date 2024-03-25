@@ -78,7 +78,7 @@
         width: 100vw;
         z-index: 100000;
         background-color: rgba(32,32,32,0.98);
-        padding: 1em 3em;
+        padding: 3em;
     }
 
     .bottom {
@@ -88,13 +88,14 @@
         bottom: 0;
         box-sizing: border-box;
         width: 100vw;
-        background-color: rgb(32,32,32);
+        background-color: rgba(240,240,255,0.2);
+        color: rgba(240,240,255,0.7);
+        border-top: 1px solid rgba(240,240,255,0.25);
         padding: 0.8em 1.2em;
         text-align: right;
     }
 
     .bottom label i {
         font-size: 1.6em;
-        color: #eee;
     }
 }
