@@ -7,7 +7,7 @@
     color: #eee;
 }
 
-.sidebar > div {
+.sidebar .item {
     user-select: none;
     cursor: default;
     display: flex;
@@ -22,7 +22,7 @@
     background-color: rgba(128,128,128,0.6);
 }
 
-.sidebar > div div:first-of-type {
+.sidebar .item div:first-of-type {
     width: 100%;
 }
 

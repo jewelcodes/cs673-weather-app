@@ -31,7 +31,7 @@ function SidebarPlace(props:any) {
 
     if(isLoading() || conditions == null) {
         return (
-            <div className={props.active ? "active" : ""} onClick={() => props.clickHandler(props.id)}>
+            <div className={props.active ? "item active" : "item"} onClick={() => props.clickHandler(props.id)}>
                 <div>
                     {/* left flexbox */}
                     <h2>{props.place}</h2>
@@ -47,7 +47,7 @@ function SidebarPlace(props:any) {
         );
     } else {
         return (
-            <div className={props.active ? "active" : ""} onClick={() => props.clickHandler(props.id)}>
+            <div className={props.active ? "item active" : "item"} onClick={() => props.clickHandler(props.id)}>
                 <div>
                     {/* left flexbox */}
                     <h2>{props.place}</h2>

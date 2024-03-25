@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
 import './Sidebar.css';
 import SidebarPlace from './SidebarPlace.tsx';
+import Search from '../Search/Search.tsx';
 import { locations, currentLocation, setLocationIndex } from '../../common/locations.ts';
 
 function Places(handler:Function, locations:string[], current:number) {
@@ -26,6 +27,7 @@ function Sidebar(props:any) {
     const places = Places(setCurrent, locations(), current);
     return (
         <div className="sidebar">
+            <Search />
             {places}
         </div>
     );
