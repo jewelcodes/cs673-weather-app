@@ -28,3 +28,14 @@
 .search input[type=submit] {
     display: none !important;
 }
+
+
+/* MOBILE/TABLET RULES */
+
+@media screen and (max-width: 1023px) {
+    .search input {
+        font-size: 1.4em;
+        background-size: 1.4em;
+        padding: 0.4em 0.4em 0.4em 2.2em;
+    }
+}
