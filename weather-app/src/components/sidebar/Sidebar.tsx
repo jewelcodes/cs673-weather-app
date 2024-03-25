@@ -22,12 +22,12 @@ function Sidebar(props:any) {
         console.log("sidebar: useeffect change to " + current);
         props.update(current);
         setLocationIndex(current);
-    }, [current]);
+    });
 
     const places = Places(setCurrent, locations(), current);
     return (
         <div className="sidebar">
-            <Search />
+            <Search handler={setCurrent} />
             {places}
         </div>
     );

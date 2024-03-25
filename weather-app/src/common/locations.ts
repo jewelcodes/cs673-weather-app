@@ -1,7 +1,7 @@
 import { now } from './now.ts';
 import { forecast } from './forecast.ts';
 
-var Locations:string[] = ["Boston", "Paris", "Cairo", "Tokyo" ];
+var Locations:string[] = ["Boston", "Cairo", "Naples", "Tokyo", "Bangkok", "Chennai"];
 var CurrentLocation:number = 0;
 var Conditions:any[] = [];
 var Forecast:any[] = [];
@@ -61,4 +61,39 @@ export function getForecast(n:number) {
 
 export function getUnits() {
     return Units;
+}
+
+export async function newPlace(query:string) {
+    let condition = await now(query, Units);
+    if(condition == null) return;
+
+    Loading = true;
+
+    let name = condition.place;     // in case the user-typed query wasn't accurate
+
+    for(let i = 0; i < Locations.length; i++) {
+        if(Locations[i] == name) {
+            // avoid duplicates
+            Loading = false;
+            return false;
+        }
+    }
+
+    let fc = await forecast(query, Units);
+    if(condition == null) {
+        Loading = false;
+        return false;
+    }
+
+    Locations.push(name);
+    Conditions.push(condition);
+    Forecast.push(fc);
+    CurrentLocation = Locations.length-1;
+
+    Loading = false;
+    return true;
+}
+
+export function getPlaceCount() {
+    return Locations.length;
 }

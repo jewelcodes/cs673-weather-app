@@ -25,7 +25,7 @@ function App() {
         await updateConditions();
 
         let now = Date.now() / 1000;
-        let conditions = getConditions(currentLocation())
+        let conditions = getConditions(currentLocation());
 
         if(conditions != null) {
             if(conditions.condition == "Mist" || conditions.condition == "Haze" || conditions.condition == "Fog") {

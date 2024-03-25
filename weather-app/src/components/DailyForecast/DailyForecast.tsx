@@ -58,7 +58,7 @@ function DailyForecast(props:any) {
         loColor = [];
         let lowOffset = (min-lowest)/totalRange;
     
-        console.log("attempt to go from " + minColor + " to " + maxColor);
+        //console.log("attempt to go from " + minColor + " to " + maxColor);
 
         for(let i = 0; i < 3; i++) {
             if(maxColor[i] > minColor[i]) {

@@ -1,3 +1,29 @@
 .search {
     margin: 0 0 0.6em 0;
+    padding: 1em 0;
+}
+
+.search input {
+    border: 0.2em solid rgba(42, 188, 255, 0);
+    transition: all 0.16s ease-out;
+    background-color: rgba(32,32,32,0.6);
+    color: rgb(240,240,255);
+    border-radius: 0.4em;
+    outline: none !important;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.4em 0.4em 0.4em 1.8em;
+    font-size: 1em;
+    background-image: url('./search.png');
+    background-size: 1em;
+    background-repeat: no-repeat;
+    background-position: 0.4em 0.4em;
+}
+
+.search input:focus, .search input:active {
+    border-color: rgba(42,188,255,0.8);
+}
+
+.search input[type=submit] {
+    display: none !important;
 }
