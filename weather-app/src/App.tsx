@@ -33,12 +33,12 @@ function App() {
             } else if(now < conditions.sunrise || now > conditions.sunset) {
                 // here we know it's night
                 if(conditions.condition == "Cloudy") setBackground(CloudyNight);
-                else if(conditions.condition == "Rain") setBackground(RainNight);
+                else if(conditions.condition == "Rain" || conditions.condition == "Drizzle" || conditions.condition == "Showers") setBackground(RainNight);
                 else if(conditions.condition == "Snow") setBackground(SnowNight);
                 else setBackground(Night);
             } else {
                 if(conditions.condition == "Cloudy") setBackground(CloudyDay);
-                else if(conditions.condition == "Rain") setBackground(RainDay);
+                else if(conditions.condition == "Rain" || conditions.condition == "Drizzle" || conditions.condition == "Showers") setBackground(RainDay);
                 else if(conditions.condition == "Snow") setBackground(SnowDay);
                 else setBackground(Day);
             }

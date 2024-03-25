@@ -1,7 +1,7 @@
 import { now } from './now.ts';
 import { forecast } from './forecast.ts';
 
-var Locations:string[] = ["Boston", "Cairo", "Naples", "Tokyo", "Bangkok", "Chennai"];
+var Locations:string[] = ["Boston", "Cairo", "Barcelona", "Bangkok", "Chennai"];
 var CurrentLocation:number = 0;
 var Conditions:any[] = [];
 var Forecast:any[] = [];

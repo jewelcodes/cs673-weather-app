@@ -178,7 +178,7 @@ function DailyForecast(props:any) {
 
             if(conditionText == "Cloudy") {
                 icon = "fa-solid fa-cloud";
-            } else if(conditionText == "Rain") {
+            } else if(conditionText == "Rain" || conditionText == "Drizzle" || conditionText == "Showers") {
                 icon = "fa-solid fa-cloud-showers-heavy"
             } else if(conditionText == "Snow") {
                 icon = "fa-regular fa-snowflake";

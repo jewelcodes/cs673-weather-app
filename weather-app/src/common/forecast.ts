@@ -84,7 +84,7 @@ function getCondition(raw:any, n:number) {
         } else if(s == "Snow") {
             pptCount++;
             snowToggle = true;
-        } else if(s == "Rain") {
+        } else if(s == "Rain" || s == "Drizzle" || s == "Showers") {
             pptCount++;
         } else if(s == "Clear") {
             clearCount++;
