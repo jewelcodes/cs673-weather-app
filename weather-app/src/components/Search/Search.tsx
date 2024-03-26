@@ -12,7 +12,7 @@ function Search(props:any) {
     return (
         <div className="search">
             <form onSubmit={submit}>
-                <input type="text" name="query" placeholder="Search" autocomplete="off" />
+                <input type="text" name="query" placeholder="Search for a city to add" autoComplete="off" />
                 <input type="submit" />
             </form>
         </div>
