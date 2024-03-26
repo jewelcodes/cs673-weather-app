@@ -87,12 +87,12 @@ function DailyForecast(props:any) {
         // for today's date, also add something to indicate current temp
         if(today) {
             let currentOffset = now-min;
-            let currentPosition = Math.floor((currentOffset*100)/dayRange) + "%";
+            let currentPosition = Math.floor((currentOffset*100)/dayRange);
 
             return (
                 <div className="gradientContainer">
                     <div className="gradient" style={{width: width, left: position, backgroundImage: "linear-gradient(to right," + rgbString(loColor) + "," + rgbString(hiColor) + ")"}}>
-                        <div className="now" style={{left: "calc(" + currentPosition + " - 0.2em)"}}></div>
+                        {currentPosition > 50 ? <div className="now" style={{left: "calc(" + currentPosition + "% - 0.2em)"}}></div> : <div className="now" style={{left: "calc(" + currentPosition + "%)"}}></div>}
                     </div>
                 </div>
             );

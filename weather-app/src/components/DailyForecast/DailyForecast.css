@@ -47,6 +47,7 @@
 }
 
 .gradientContainer {
+    box-sizing: border-box;
     position: relative;
     display: inline-block;
     width: 50%;
@@ -57,6 +58,7 @@
 }
 
 .gradient {
+    box-sizing: border-box;
     display: inline-block;
     position: absolute;
     top: 0;
@@ -69,6 +71,7 @@
 }
 
 .gradient .now {
+    box-sizing: border-box;
     display: inline-block;
     position: absolute;
     top: 0;
