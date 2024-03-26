@@ -36,6 +36,7 @@
     .search input {
         font-size: 1.4em;
         background-size: 1.4em;
+        background-color: rgba(80,80,80,0.6);
         padding: 0.4em 0.4em 0.4em 2.2em;
     }
 }
