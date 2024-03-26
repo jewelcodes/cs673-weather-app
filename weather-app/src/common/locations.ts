@@ -8,7 +8,7 @@ var Forecast:any[] = [];
 var Loading = true;
 var Initial = true;
 var lastUpdate = 0;
-var Units = "metric";
+var Units = "imperial";
 
 export function locations() {
     return Locations;
