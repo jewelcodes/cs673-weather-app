@@ -1,0 +1,85 @@
+.menu i {
+    position: relative;
+    display: inline-block;
+    font-size: 1.1em;
+    line-height: 100%;
+    padding: 0.12em;
+    color: #eee;
+    border: 0.12em solid #eee;
+    border-radius: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    width: 1.34em;
+    transition: opacity 0.16s ease-out;
+}
+
+.menu i:focus {
+    opacity: 0.6;
+}
+
+.menu ul {
+    display: none !important;
+    text-align: left !important;
+    position: absolute;
+    z-index: 1000000;
+    display: block;
+    right: 0em;
+    top: 2.4em;
+    margin: 0px;
+    list-style: none;
+    bottom: 0;
+    padding: 0;
+}
+
+.menu i:focus + ul {
+    display: block !important;
+}
+
+.menu ul li {
+    margin: 0;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.6em 9em 0.6em 2em;
+    background-color: rgba(32,32,40,0.9);
+    border-bottom: 1px solid rgba(240,240,255,0.25);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 100%;
+}
+
+.menu ul li:hover {
+    background-color: rgb(71,114,214);
+}
+
+.menu ul li:first-of-type {
+    border-top-left-radius: 0.8em;
+    border-top-right-radius: 0.8em;
+}
+
+.menu ul li:last-of-type {
+    border-bottom-left-radius: 0.8em;
+    border-bottom-right-radius: 0.8em;
+    border: 0;
+}
+
+.selected {
+    background-image: url('./checkmark.png');
+    background-size: 0.9em;
+    background-repeat: no-repeat;
+    background-position: 0.7em 0.75em;
+}
+
+/* MOBILE/TABLET RULES */
+
+@media screen and (max-width: 1023px) {
+    .menu ul li {
+        padding: 1em 14em 1em 2em;
+        background-color: rgba(64, 64, 72, 0.98);
+    }
+
+    .selected {
+        background-position: 0.85em 1.15em;
+    }
+}

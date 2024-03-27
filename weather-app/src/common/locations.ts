@@ -1,5 +1,6 @@
 import { now } from './now.ts';
 import { forecast } from './forecast.ts';
+import { updateWhile } from 'typescript';
 
 var Locations:string[] = ["Boston", "Cairo", "Barcelona", "Bangkok", "Chennai"];
 var CurrentLocation:number = 0;
@@ -96,4 +97,13 @@ export async function newPlace(query:string) {
 
 export function getPlaceCount() {
     return Locations.length;
+}
+
+export function setUnits(u:string) {
+    if(u === Units) return;
+    
+    console.log("changing units to " + u);
+    Units = u;
+    lastUpdate = 0;
+    //updateConditions();
 }

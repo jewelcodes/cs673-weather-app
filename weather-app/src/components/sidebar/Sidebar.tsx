@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect} from 'react';
 import './Sidebar.css';
 import SidebarPlace from './SidebarPlace.tsx';
 import Search from '../Search/Search.tsx';
+import UnitMenu from '../UnitMenu/UnitMenu.tsx';
 import { locations, currentLocation, setLocationIndex } from '../../common/locations.ts';
 
 function Places(handler:Function, locations:string[], current:number) {
@@ -38,6 +39,7 @@ function Sidebar(props:any) {
         <div className="sidebarContainer">
             <input type="checkbox" id="sidebarToggle" />
             <div className="sidebar">
+                <UnitMenu />
                 <Search handler={clickHandler} />
                 {places}
             </div>
