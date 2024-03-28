@@ -168,6 +168,9 @@ function DailyForecast(props:any) {
                 maxC = max;
                 nowC = conditions.temp;
             }
+
+            if(minC < lowest) lowest = minC;
+            if(maxC > highest) highest = maxC;
             
             // for current day only
             if(d == 0) {
