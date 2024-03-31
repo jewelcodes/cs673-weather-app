@@ -1,0 +1,17 @@
+.footer {
+    opacity: 0.7;
+    font-weight: bold;
+    margin-top: 3em;
+}
+
+.footer h1, a {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    line-height: 150%;
+}
+
+.footer a {
+    text-decoration: underline;
+    color: inherit;
+}
