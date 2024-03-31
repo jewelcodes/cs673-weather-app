@@ -197,7 +197,11 @@ function DailyForecast(props:any) {
                 <div className="dailyEntry">
                     <div className="day"><strong>{d == 0 ? "Today" : days[day]}</strong></div>
                     <div className="icon"><i className={icon} title={conditionText}></i></div>
-                    <div className="temp"><strong>{Math.round(min)}&deg;</strong>{tempGradient(d == 0, lowest, highest, minC, maxC, nowC)}<strong>{Math.round(max)}&deg;</strong></div>
+                    <div className="temp">
+                        <strong className="low">{Math.round(min)}&deg;</strong>
+                        {tempGradient(d == 0, lowest, highest, minC, maxC, nowC)}
+                        <strong>{Math.round(max)}&deg;</strong>
+                    </div>
                 </div>
             );
         }

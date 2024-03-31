@@ -46,6 +46,10 @@
     width: 65%;
 }
 
+.dailyEntry .low {
+    opacity: 0.7;
+}
+
 .gradientContainer {
     box-sizing: border-box;
     position: relative;
