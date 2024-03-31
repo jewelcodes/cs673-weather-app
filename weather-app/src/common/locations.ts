@@ -2,7 +2,7 @@ import { now } from './now.ts';
 import { forecast } from './forecast.ts';
 import { updateWhile } from 'typescript';
 
-var Locations:string[] = ["Boston", "Cairo", "Barcelona", "Bangkok", "Chennai"];
+var Locations:string[] = ["Boston", "Cairo", "Moscow", "Bangkok", "Seoul"];
 var CurrentLocation:number = 0;
 var Conditions:any[] = [];
 var Forecast:any[] = [];
